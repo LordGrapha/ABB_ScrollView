@@ -52,10 +52,30 @@ public:
     {
 
     }
-    ABB_Node<T>* search()
-    {
 
+    ABB_Node<T>* search(int pK)
+    {
+        if(root == nullptr){
+            return nullptr;
+        }
+        return search(pK, root);
     }
+
+    ABB_Node<T>* search(int pK, ABB_Node<T>* pParent)
+    {
+        if(pParent == nullptr){
+            return nullptr;
+        }
+        if(pK == pParent->key){
+            return pParent;
+        }
+        if(pK < pParent->key){
+            return search(pK, pParent->left);
+        }
+        return search(pK, pParent->right);
+    }
+
+
     void update()
     {
 

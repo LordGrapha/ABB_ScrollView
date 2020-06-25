@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QtCore>
 #include "abb.h"
 
 int main(int argc, char *argv[])
@@ -18,6 +19,14 @@ int main(int argc, char *argv[])
     test->insert(12, "Sixth One");
     test->insert(17, "Seventh One");
     test->inOrder();
+    qDebug() << "\n\nSearching 17";
+    ABB_Node<QString>* tmp = test->search(3);
+    if(tmp != nullptr){
+        qDebug() << "Node found! And it is " << tmp->key << " the " << tmp->value;
+    }
+    else{
+        qDebug() << "Node not found...";
+    }
     /*
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
