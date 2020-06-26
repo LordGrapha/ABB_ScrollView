@@ -3,6 +3,28 @@
 #include <QtCore>
 #include "abb.h"
 
+void searchTesting(ABB<QString>* test){
+    qDebug() << "\n\nSearching 3";
+    ABB_Node<QString>* tmp = test->search(3);
+    if(tmp != nullptr){
+        qDebug() << "Node found! And it is " << tmp->key << " the " << tmp->value;
+    }
+    else{
+        qDebug() << "Node not found...";
+    }
+}
+
+
+void insertTesting(ABB<QString>* test){
+    test->insert(10, "First One");
+    test->insert(5, "Second One");
+    test->insert(15, "Third One");
+    test->insert(2, "Fourth One");
+    test->insert(3, "Fifth One");
+    test->insert(12, "Sixth One");
+    test->insert(17, "Seventh One");
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -11,22 +33,18 @@ int main(int argc, char *argv[])
 
     ABB<QString>* test = new ABB<QString>();
 
-    test->insert(10, "First One");
-    test->insert(5, "Second One");
-    test->insert(15, "Third One");
-    test->insert(2, "Fourth One");
-    test->insert(3, "Fifth One");
-    test->insert(12, "Sixth One");
-    test->insert(17, "Seventh One");
+    insertTesting(test);
     test->inOrder();
-    qDebug() << "\n\nSearching 17";
-    ABB_Node<QString>* tmp = test->search(3);
-    if(tmp != nullptr){
-        qDebug() << "Node found! And it is " << tmp->key << " the " << tmp->value;
-    }
-    else{
-        qDebug() << "Node not found...";
-    }
+    searchTesting(test);
+
+
+    /*
+     * Next Actions: Update and delete features
+     * Test all the cases.
+     *
+     ******************   UML Diagram URGENT    **************************
+     */
+
     /*
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
