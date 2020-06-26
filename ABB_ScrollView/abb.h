@@ -48,9 +48,13 @@ public:
         }
     }
 
-    ABB_Node<T>* remove()
+    ABB_Node<T>* remove(int pK)
     {
-
+        ABB_Node<T>* tmp = search(pK);
+        if(tmp != nullptr){
+            //All uncompleted, still missing the parent atrib and maybe grandpa or uncle ptr for other trees
+        }
+        return nullptr;
     }
 
     ABB_Node<T>* search(int pK)
@@ -76,9 +80,10 @@ public:
     }
 
 
-    void update()
+    void update(int pK, T pNewT)
     {
-
+        ABB_Node<T>* tmp = search(pK);
+        tmp->value = pNewT;
     }
         //all the traversals are prints on the console, edit this to return a QList or whtvs you need
 

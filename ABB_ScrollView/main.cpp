@@ -25,6 +25,14 @@ void insertTesting(ABB<QString>* test){
     test->insert(17, "Seventh One");
 }
 
+void updateTesting(ABB<QString>* test){
+    test->update(3, "The THIRD Choosen one");
+}
+
+void deleteTesting(ABB<QString>* test){
+    test->remove(3);
+}
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -36,6 +44,9 @@ int main(int argc, char *argv[])
     insertTesting(test);
     test->inOrder();
     searchTesting(test);
+    updateTesting(test);
+    searchTesting(test);
+    //deleteTesting(test);      Finish the function first
 
 
     /*
